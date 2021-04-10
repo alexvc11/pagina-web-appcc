@@ -9,7 +9,8 @@ const opc_D = document.getElementById("INopc_D");
 const txta = document.getElementById("ta-resp-correcta");
 const body = document.getElementById("body");
 const Resp = document.getElementsByName("resp-correcta");
-
+const BaseDatos = require("./schema");
+const mongoose = require("mongoose");
 
 
 
@@ -20,25 +21,38 @@ window.onload = () => {
     if(contraseña != "1234"){
         window.close();
     }
-    
+    mongoose.connect("mongodb+srv://alexvc11:Campanilla03@cluster0.unpnh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
+        useNewUrlParser, useUnifiedTopology
+    }).then(console.log("Conexión con DB completa"))
 }
 form.onsubmit = (e) => {
     //TODO: agregar implementación con la base de datos.
-    
-
     e.preventDefault();
     for(i=0;i<Resp.length;i++){
         if(Resp[i].checked == true){
-            console.log(Resp[i].value);
+            var respCorrecta = Resp[i].value;
         }
     }
+    const data = new BaseDatos({
+        N: num_preg.value,
+        tit_preg: tit_preg.value,
+        Opc_A: opc_A.value,
+        Opc_B: opc_B.value,
+        Opc_C: opc_C.value,
+        Opc_D: opc_D.value,
+        Resp: respCorrecta,
+        Resp_TXTA: txta.value,
+    })
+    data.save().then(window.alert("La pregunta ha sido guardada correctamente")).then(() => {
+        num_preg.value = 1;
+        tit_preg.value = "";
+        opc_A.value = "";
+        opc_B.value = "";
+        opc_C.value = "";
+        opc_D.value = "";
+        txta.value = "";
+    });
 
-    num_preg.value = 1;
-    tit_preg.value = "";
-    opc_A.value = "";
-    opc_B.value = "";
-    opc_C.value = "";
-    opc_D.value = "";
-    txta.value = "";
+    
 }
 
