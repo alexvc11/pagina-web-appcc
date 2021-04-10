@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="main.css">
+        
+    </head>
+    <body id="body">
+        <div id="formato-body">
+        <form id="form-datos">
+        
+            <div id="caja-titulo">
+                <input id="INnum" type="number" placeholder="Nº" style="display: inline;" required/>
+                <div style="display: inline;">.</div>
+                <input id="INpreg" type="text" placeholder="Título Pregunta" style="display: inline;" required/>
+            </div>
+            <div id="caja-opciones">
+          <div style="display: inline;">a)</div>
+            <input class="INopc" id="INopc_A" type="text" placeholder="Opción A" required>
+            <br>
+            <div style="display: inline;">b)</div>
+            <input class="INopc" id="INopc_B" type="text" placeholder="Opción B" required>
+            <br>
+            <div style="display: inline;">c)</div>
+            <input class="INopc" id="INopc_C" type="text" placeholder="Opción C" required>
+            <br>
+            <div style="display: inline;">d)</div>
+            <input class="INopc" id="INopc_D" type="text" placeholder="Opción D" required>
+        </div>
+        
+        
+            <p>Selecciona la respuesta correcta y su explicación:</p>
+            <div id="preguntas-radio">
+                <input class="resp_radio" id="Resp_A" type="radio" value="Resp_A" name="resp-correcta">
+                <label for="Resp_A">Opción A</label>
+                <input class="resp_radio" id="Resp_B" type="radio" value="Resp_B" name="resp-correcta">
+                <label for="Resp_B">Opción B</label>
+                <input class="resp_radio" id="Resp_C" type="radio" value="Resp_C" name="resp-correcta">
+                <label for="Resp_C">Opción C</label>
+                <input class="resp_radio" id="Resp_D" type="radio" value="Resp_D" name="resp-correcta">
+                <label for="Resp_D">Opción D</label>
+            </div> 
+            <textarea placeholder="Explicación de la respuesta..." style="display: block;" id="ta-resp-correcta" required></textarea>
+        <button type="submit" style="margin-top: 10px;">Enviar Pregunta</button>
+
+    </form>
+</div>
+    </body>
+    <script src="main.js"></script>
+</html>
