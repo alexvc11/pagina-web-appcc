@@ -1,4 +1,17 @@
+//SCHEMA
+const mongoose = require("mongoose");
 
+const DB = mongoose.Schema({
+    N: Number,
+    tit_preg: String,
+    Opc_A: String,
+    Opc_B: String,
+    Opc_C: String,
+    Opc_D: String,
+    Resp: String,
+    Resp_TXTA: String
+});
+//CÓDIGO
 const form = document.getElementById("form-datos");
 var num_preg = document.getElementById("INnum");
 const tit_preg = document.getElementById("INpreg");
@@ -9,8 +22,7 @@ const opc_D = document.getElementById("INopc_D");
 const txta = document.getElementById("ta-resp-correcta");
 const body = document.getElementById("body");
 const Resp = document.getElementsByName("resp-correcta");
-const BaseDatos = require("./schema");
-const mongoose = require("mongoose");
+
 
 
 
@@ -33,7 +45,7 @@ form.onsubmit = (e) => {
             var respCorrecta = Resp[i].value;
         }
     }
-    const data = new BaseDatos({
+    const data = new DB({
         N: num_preg.value,
         tit_preg: tit_preg.value,
         Opc_A: opc_A.value,
