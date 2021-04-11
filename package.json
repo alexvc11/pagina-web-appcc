@@ -1,0 +1,25 @@
+{
+  "name": "appccweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "mongoose": "^5.12.3",
+    "dotenv": "^8.2.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexvc11/pagina-web-appcc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexvc11/pagina-web-appcc/issues"
+  },
+  "homepage": "https://github.com/alexvc11/pagina-web-appcc#readme"
+}
