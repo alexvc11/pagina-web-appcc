@@ -1,5 +1,5 @@
 //SCHEMA
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const DB = mongoose.Schema({
     N: Number,
