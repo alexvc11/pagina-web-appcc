@@ -1,5 +1,6 @@
 //SCHEMA
-const mongoose = require("mongoose");
+'use strict';
+const mongoose = require('mongoose');
 
 const DB = new mongoose.Schema({
     N: Number,
@@ -33,9 +34,7 @@ window.onload = () => {
     if(contraseña != "1234"){
         window.close();
     }
-    mongoose.connect("mongodb+srv://alexvc11:Campanilla03@cluster0.unpnh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
-        useNewUrlParser, useUnifiedTopology
-    }).then(console.log("Conexión con DB completa"))
+    
 }
 form.onsubmit = (e) => {
     //TODO: agregar implementación con la base de datos.
