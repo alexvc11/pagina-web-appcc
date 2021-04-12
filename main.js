@@ -1,7 +1,7 @@
 //SCHEMA
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-const DB = mongoose.Schema({
+const DB = new mongoose.Schema({
     N: Number,
     tit_preg: String,
     Opc_A: String,
