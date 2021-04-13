@@ -2,16 +2,7 @@
 'use strict';
 const mongoose = require('mongoose');
 
-const DB = new mongoose.Schema({
-    N: Number,
-    tit_preg: String,
-    Opc_A: String,
-    Opc_B: String,
-    Opc_C: String,
-    Opc_D: String,
-    Resp: String,
-    Resp_TXTA: String
-});
+
 //CÓDIGO
 const form = document.getElementById("form-datos");
 var num_preg = document.getElementById("INnum");
@@ -25,8 +16,6 @@ const body = document.getElementById("body");
 const Resp = document.getElementsByName("resp-correcta");
 
 
-
-
 window.onload = () => {
     const contraseña = window.prompt("Contraseña:",);
     //TODO: comprobar contraseña a través de una variable de entorno en el servidor web
@@ -34,7 +23,8 @@ window.onload = () => {
     if(contraseña != "1234"){
         window.close();
     }
-    
+    fetch("http://localhost:3004/data/count")
+    .then(x => num_preg.value = x);
 }
 form.onsubmit = (e) => {
     //TODO: agregar implementación con la base de datos.
@@ -44,7 +34,7 @@ form.onsubmit = (e) => {
             var respCorrecta = Resp[i].value;
         }
     }
-    const data = new DB({
+    const envio = {
         N: num_preg.value,
         tit_preg: tit_preg.value,
         Opc_A: opc_A.value,
@@ -52,9 +42,16 @@ form.onsubmit = (e) => {
         Opc_C: opc_C.value,
         Opc_D: opc_D.value,
         Resp: respCorrecta,
-        Resp_TXTA: txta.value,
-    })
-    data.save().then(window.alert("La pregunta ha sido guardada correctamente")).then(() => {
+        Resp_TXTA: txta.value
+    }
+    fetch("http://localhost:3004/data", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'applicaction/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(envio)
+    }).then(window.alert("La pregunta ha sido enviada correctamente")).then(() => {
         num_preg.value = 1;
         tit_preg.value = "";
         opc_A.value = "";
@@ -62,8 +59,8 @@ form.onsubmit = (e) => {
         opc_C.value = "";
         opc_D.value = "";
         txta.value = "";
-    });
-
-    
+    }).catch(err => {
+        window.alert("Ha ocurrido un problema al enviar la pregunta")
+        console.log(err)
+    })
 }
-
