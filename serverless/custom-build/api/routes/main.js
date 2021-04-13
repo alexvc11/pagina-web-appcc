@@ -1,7 +1,3 @@
-//SCHEMA
-'use strict';
-const mongoose = require('mongoose');
-
 
 //CÓDIGO
 const form = document.getElementById("form-datos");
@@ -23,13 +19,13 @@ window.onload = () => {
     if(contraseña != "1234"){
         window.close();
     }
-    fetch("http://localhost:3004/data/count")
+    fetch("https://trini-why-quiz.vercel.app/data/count")
     .then(x => num_preg.value = x);
 }
 form.onsubmit = (e) => {
     //TODO: agregar implementación con la base de datos.
     e.preventDefault();
-    for(i=0;i<Resp.length;i++){
+    for(let i=0;i<Resp.length;i++){
         if(Resp[i].checked == true){
             var respCorrecta = Resp[i].value;
         }
@@ -44,7 +40,7 @@ form.onsubmit = (e) => {
         Resp: respCorrecta,
         Resp_TXTA: txta.value
     }
-    fetch("http://localhost:3004/data", {
+    fetch("https://trini-why-quiz.vercel.app/data", {
         method: "POST",
         headers: {
             'Content-Type': 'applicaction/json',

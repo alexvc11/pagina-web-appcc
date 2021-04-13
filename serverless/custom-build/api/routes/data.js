@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
     //data3.save();
 })
 router.get("/count", (req, res) => {
-    res.send({body: data2.count()})
+    res.send("1")
 })
 
 module.exports = router;

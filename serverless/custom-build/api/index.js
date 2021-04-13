@@ -9,9 +9,10 @@ api.use(cors());
 
 mongoose.connect("mongodb+srv://alexvc12:Mgulahdn0mIvDxpe@torneoportugal.qgzdj.mongodb.net/Apuestas?retryWrites=true&w=majority", {useUnifiedTopology: true, useNewUrlParser: true}).then(() => console.log("coneixión con mongo completada"));
 const data = require("./routes/data");
+const preguntas = require("./routes/preguntas")
 
 api.use("/data", data);
-
+api.use("/preguntas", preguntas)
 
 module.exports = api;
 
